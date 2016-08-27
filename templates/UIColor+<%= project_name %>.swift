@@ -8,9 +8,7 @@
 
 import UIKit
 
-import UIKit
-
-extension UIColor {
+public extension UIColor {
 
     public static var paletteBlack: UIColor {
         return UIColor(argb: "222222")

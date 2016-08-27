@@ -84,6 +84,12 @@ app_target_templates:
     - <%= project_name %>:
       - Modules:
       - Development Pods:
+        - UIColor+<%= project_name %>:
+          - UIColor+<%= project_name %>.swift
+          - UIColor+<%= project_name %>.podspec
+        - UIFont+<%= project_name %>:
+          - UIFont+<%= project_name %>.swift
+          - UIFont+<%= project_name %>.podspec
       - Generic:
       - Main Target:
         - Some Feature:
@@ -94,10 +100,6 @@ app_target_templates:
           - View Data:
           - View Controllers:
           - Views:
-        - UIColor+<%= project_name %>:
-          - UIColor+<%= project_name %>.swift
-        - UIFont+<%= project_name %>:
-          - UIFont+<%= project_name %>.swift
       - Resources:
         - Images.xcassets
         - Main.storyboard
