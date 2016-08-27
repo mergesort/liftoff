@@ -1,0 +1,68 @@
+force_try: warning
+force_cast: warning
+
+variable_name:
+  excluded:
+    - id
+    - Id
+
+opt_in_rules:
+  - force_unwrapping
+
+disabled_rules: # rule identifiers to exclude from running
+  - line_length # enforce a maximum line length
+  - function_body_length # enforce a maximum function body length
+  - type_body_length # enforce a maximum type body length
+  - variable_name # variables should start with a lowercase character
+  - type_name # enforce a 3-character minimum type name length
+  - file_length # enforce a maximum file length
+  - cyclomatic_complexity # i don't even know
+  - function_parameter_count # ¯\_(ツ)_/¯ we have some methods that use a lot of parame$
+
+excluded: # paths to ignore during linting. overridden by `included`.
+  - Pods
+
+custom_rules:
+  force_https:
+    name: "Force HTTPS over HTTP"
+    regex: "((?i)http(?!s))"
+    match_kinds: string
+    message: "HTTPS should be favored over HTTP"
+    severity: warning
+
+#   no_header_comments:
+#     name: "Header Comments"
+#     regex: "(//.*\n//.*\n//.*Timehop.*\n//.*\n//  Created by.*\n//  Copyright.*\n//)" # matching pattern
+#     match_kinds:
+#       - comment
+#     message: "Template header comments should be removed."
+
+  comments_space:
+    name: "Space After Comment"
+    regex: "(^ *//\w+)"
+    message: "There should be a space after //"
+    severity: error
+
+  empty_line_after_guard:
+    name: "Empty Line After Guard"
+    regex: "(^ *guard[ a-zA-Z0-9=?.\(\),><!]*\{[ a-zA-Z0-9=?.\(\),><!]*\}\n *(?!(?:return|guard))\S+)"
+    message: "There should be an empty line after a guard"
+    severity: warning
+
+  empty_line_after_super:
+    name: "Empty Line After Super"
+    regex: "(^ *super\.[ a-zA-Z0-9=?.\(\)\{\}:,><!]*\n *(?!(?:\}|return))\S+)"
+    message: "There should be an empty line after super"
+    severity: error
+
+  empty_first_line:
+    name: "Empty First Line"
+    regex: "(^[ a-zA-Z ]*(?:protocol|enum|extension|class|struct) (?!(?:var|let))[ a-zA-Z:]*\{\n *\S+)"
+    message: "There should be an empty line after a declaration"
+    severity: error
+
+  # multiple_empty_lines:
+  #   name: "Multiple Empty Lines"
+  #   regex: "((?:\s*\n){3,})"
+  #   message: "There are too many line breaks"
+  #   severity: error

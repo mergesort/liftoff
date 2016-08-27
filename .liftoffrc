@@ -80,6 +80,7 @@ app_target_templates:
           - <%= project_name %>-Prefix.pch
           - main.m
   swift:
+#    - <%= '.' %>swiftlint.yml
     - <%= project_name %>:
       - Modules:
       - Development Pods:
