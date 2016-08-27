@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cp .liftoffrc ~/
-mkdir ~/.liftoff
+mkdir -p ~/.liftoff
 cp -r templates/ ~/.liftoff/templates

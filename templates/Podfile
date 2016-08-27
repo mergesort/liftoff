@@ -9,6 +9,7 @@ def development_pods
 end
 
 def external_pods
+  pod 'BuddyBuildSDK'
   pod 'R.swift', '2.4.0'
 end
 
