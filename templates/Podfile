@@ -9,7 +9,7 @@ def development_pods
 end
 
 def external_pods
-  pod 'R.swift', '2.5.0'
+  pod 'R.swift', '2.4.0'
 end
 
 target '<%= project_name %>' do
