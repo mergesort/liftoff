@@ -91,6 +91,8 @@ app_target_templates:
           - UIFont+<%= project_name %>.swift
           - UIFont+<%= project_name %>.podspec
       - Generic:
+        - Logging:
+          - Loggable.swift
       - Main Target:
         - Some Feature:
           - Extensions:
