@@ -1,0 +1,48 @@
+source 'https://github.com/CocoaPods/Specs'
+
+use_frameworks!
+
+platform :ios, '<%= deployment_target %>'
+
+def development_pods
+
+end
+
+def external_pods
+  pod 'R.swift', '2.5.0'
+end
+
+target '<%= project_name %>' do
+  development_pods
+  external_pods
+end
+
+<% if enable_settings && dependency_manager_enabled?("cocoapods") %>
+# Copy acknowledgements to the Settings.bundle
+
+post_install do | installer |
+  require 'fileutils'
+
+  pods_acknowledgements_path = 'Pods/Target Support Files/Pods/Pods-Acknowledgements.plist'
+  settings_bundle_path = Dir.glob("**/*Settings.bundle*").first
+
+  if File.file?(pods_acknowledgements_path)
+    puts 'Copying acknowledgements to Settings.bundle'
+    FileUtils.cp_r(pods_acknowledgements_path, "#{settings_bundle_path}/Acknowledgements.plist", :remove_destination => true)
+  end
+end
+
+# Fix for frameworks needing to match up in Xcode 7.1
+post_install do |installer|
+    plist_buddy = "/usr/libexec/PlistBuddy"
+    installer.pods_project.targets.each do |target|
+        plist = "Pods/Target Support Files/#{target}/Info.plist"
+        original_version = `#{plist_buddy} -c "Print CFBundleShortVersionString" "#{plist}"`.strip
+        changed_version = original_version[/(\d+\.){1,2}(\d+)?/]
+        unless original_version == changed_version
+            `#{plist_buddy} -c "Set CFBundleShortVersionString #{changed_version}" "Pods/Target Support Files/#{target}/Info.plist"`
+        end
+    end
+end
+
+<% end %>
