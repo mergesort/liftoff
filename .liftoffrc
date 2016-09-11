@@ -84,16 +84,16 @@ app_target_templates:
     - <%= project_name %>:
       - Modules:
       - Development Pods:
+      - Generic:
+        - Logging:
+          - Loggable.swift
+      - Main Target:
         - UIColor+<%= project_name %>:
           - UIColor+<%= project_name %>.swift
           - UIColor+<%= project_name %>.podspec
         - UIFont+<%= project_name %>:
           - UIFont+<%= project_name %>.swift
           - UIFont+<%= project_name %>.podspec
-      - Generic:
-        - Logging:
-          - Loggable.swift
-      - Main Target:
         - Some Feature:
           - Extensions:
           - Models:
