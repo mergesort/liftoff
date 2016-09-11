@@ -8,18 +8,38 @@
 
 import UIKit
 
-public extension UIFont {
+enum FontStyle {
 
-    static func regularFontOfSize(size: Float) -> UIFont {
-        return UIFont.systemFontOfSize(CGFloat(size))
+    case light
+    case regular
+    case heavy
+
+}
+
+private extension FontStyle {
+
+    var fontName: String {
+        switch self {
+
+        case .light:
+            return ""
+
+        case .regular:
+            return ""
+
+        case .heavy:
+            return ""
+
+        }
+
     }
 
-    static func lightFontOfSize(size: Float) -> UIFont {
-        return UIFont.systemFontOfSize(CGFloat(size), weight: UIFontWeightLight)
+}
+
+extension UIFont {
+
+    static func <%= project_name %>Font(_ style: FontStyle, size: CGFloat) -> UIFont? {
+        return UIFont(name: style.fontName, size: size)
     }
 
-    static func heavyFontOfSize(size: Float) -> UIFont {
-        return UIFont.systemFontOfSize(CGFloat(size), weight: UIFontWeightSemibold)
-    }
-    
 }
