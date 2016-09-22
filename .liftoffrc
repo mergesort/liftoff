@@ -23,6 +23,7 @@ run_script_phases:
 templates:
   - setup.sh: bin/setup
   - README.md: README.md
+  - swiftlint.yml .swiftlint.yml
 
 warnings:
   - GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED
@@ -49,7 +50,7 @@ warnings:
   - CLANG_WARN_ENUM_CONVERSION
   - CLANG_WARN_INT_CONVERSION
   - CLANG_WARN_CONSTANT_CONVERSION
-
+s
 xcode_command: open -a 'Xcode' .
 
 project_template: swift
@@ -80,7 +81,6 @@ app_target_templates:
           - <%= project_name %>-Prefix.pch
           - main.m
   swift:
-#    - <%= '.' %>swiftlint.yml
     - <%= project_name %>:
       - Modules:
       - Development Pods:
