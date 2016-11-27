@@ -17,10 +17,8 @@ strict_prompts: false
 deployment_target: 9.0
 
 run_script_phases:
-  - file: swift_format.sh
-    name: SwiftFormat
-  - file: swift_lint.sh
-    name: SwiftLint
+  - file: build_cleanup.sh
+    name: Build Cleanup
 
 templates:
   - setup.sh: bin/setup
