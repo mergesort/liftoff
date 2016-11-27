@@ -38,7 +38,7 @@ private extension FontStyle {
 
 extension UIFont {
 
-    static func <%= project_name %>Font(_ style: FontStyle, size: CGFloat) -> UIFont? {
+    static func fontWithStyle(_ style: FontStyle, size: CGFloat) -> UIFont? {
         return UIFont(name: style.fontName, size: size)
     }
 
