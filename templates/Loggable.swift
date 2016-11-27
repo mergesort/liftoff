@@ -9,13 +9,13 @@
 import Foundation
 
 protocol Loggable {
-
-    func setup()
-
-    static func verbose(message: AnyObject)
-    static func debug(message: AnyObject)
-    static func info(message: AnyObject)
-    static func warning(message: AnyObject)
-    static func error(message: AnyObject)
-
+    
+    static func setup()
+    
+    static func verbose(_ message: Any)
+    static func debug(_ message: Any)
+    static func info(_ message: Any)
+    static func warning(_ message: Any)
+    static func error(_ message: Any)
+    
 }
