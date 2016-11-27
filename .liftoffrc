@@ -17,13 +17,17 @@ strict_prompts: false
 deployment_target: 9.0
 
 run_script_phases:
-  - file: swiftlint.sh
-    name: Swiftlint
+  - file: swift_format.sh
+    name: SwiftFormat
+  - file: swift_lint.sh
+    name: SwiftLint
 
 templates:
   - setup.sh: bin/setup
   - README.md: README.md
   - swiftlint.yml: .swiftlint.yml
+  - swift_format.sh: bin/swift_format.sh
+  - swift_lint.sh: bin/swift_lint.sh
 
 warnings:
   - GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED
@@ -84,16 +88,23 @@ app_target_templates:
     - <%= project_name %>:
       - Modules:
       - Development Pods:
+        - API:
+          - API.podspec
+          - API.swift
       - Generic:
+        - DispatchTime+AfterNow:
+          - DispatchTime+AfterNow.swift
         - Logging:
           - Loggable.swift
+        - UIStackView+Convenience:
+          - UIStackView+Convenience.swift
+        - UIViewController+ChildViewController:
+          - UIViewController+ChildViewController.swift
       - Main Target:
         - UIColor+<%= project_name %>:
           - UIColor+<%= project_name %>.swift
-          - UIColor+<%= project_name %>.podspec
         - UIFont+<%= project_name %>:
           - UIFont+<%= project_name %>.swift
-          - UIFont+<%= project_name %>.podspec
         - Some Feature:
           - Extensions:
           - Models:

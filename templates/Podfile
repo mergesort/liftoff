@@ -5,15 +5,13 @@ use_frameworks!
 platform :ios, '<%= deployment_target %>'
 
 def development_pods
-    pod 'UIColor+<%= project_name %>', :path => './<%= project_name %>/Development Pods/UIColor+<%= project_name %>'
-    pod 'UIFont+<%= project_name %>', :path => './<%= project_name %>/Development Pods/UIFont+<%= project_name %>'
+  pod 'API', :path => './<%= project_name %>/Development Pods/API'
 end
 
 def external_pods
   pod 'BuddyBuildSDK'
-  pod 'Localize-Swift', '1.5'
-  pod 'R.swift', '2.4.0'
-  pod 'SwiftyBeaver', '0.6.5'
+  pod 'Localize-Swift', '1.7.1'
+  pod 'SwiftyBeaver', '1.1.1'
 end
 
 target '<%= project_name %>' do

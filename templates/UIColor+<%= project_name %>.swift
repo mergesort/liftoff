@@ -13,59 +13,59 @@ public extension UIColor {
     public static var paletteBlack: UIColor {
         return #colorLiteral(red: 0.1333333333, green: 0.1333333333, blue: 0.1333333333, alpha: 1) // #222222
     }
-    
+
     public static var paletteWhite: UIColor {
         return #colorLiteral(red: 0.9960784314, green: 0.9960784314, blue: 0.9960784314, alpha: 1) // #FEFEFE
     }
 
 }
 
-private extension UIColor {
+public extension UIColor {
 
-    convenience init(argb: String) {
+    convenience init(rgba: String) {
         let red: CGFloat
         let green: CGFloat
         let blue: CGFloat
         let alpha: CGFloat
         let hex: String
 
-        if argb.hasPrefix("#") {
-            let index = argb.startIndex.advancedBy(1)
-            hex = argb.substringFromIndex(index)
+        if rgba.hasPrefix("#") {
+            let index = rgba.characters.index(rgba.startIndex, offsetBy: 1)
+            hex = rgba.substring(from: index)
         } else {
-            hex = argb
+            hex = rgba
         }
 
-        let scanner = NSScanner(string: hex)
+        let scanner = Scanner(string: hex)
         var hexValue: CUnsignedLongLong
         hexValue = 0
 
-        if scanner.scanHexLongLong(&hexValue) {
-            switch hex.characters.count {
+        let defaultValue: CGFloat = 1.0
 
-            case 6:
-                red = CGFloat((hexValue & 0xFF0000) >> 16) / 255.0
-                green = CGFloat((hexValue & 0x00FF00) >> 8) / 255.0
-                blue = CGFloat(hexValue & 0x0000FF) / 255.0
-                alpha = 1.0
+        guard scanner.scanHexInt64(&hexValue) else {
+            self.init(red: defaultValue, green: defaultValue, blue: defaultValue, alpha: defaultValue)
+            return
+        }
 
-            case 8:
-                alpha = CGFloat((hexValue & 0xFF000000) >> 24) / 255.0
-                red = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
-                green = CGFloat((hexValue & 0x0000FF00) >> 8) / 255.0
-                blue = CGFloat(hexValue & 0x000000FF) / 255.0
+        switch hex.characters.count {
 
-            default:
-                alpha = 1.0
-                red = 1.0
-                green = 1.0
-                blue = 1.0
-            }
-        } else {
+        case 6:
+            red = CGFloat((hexValue & 0xFF0000) >> 16) / 255.0
+            green = CGFloat((hexValue & 0x00FF00) >> 8) / 255.0
+            blue = CGFloat(hexValue & 0x0000FF) / 255.0
             alpha = 1.0
-            red = 1.0
-            green = 1.0
-            blue = 1.0
+
+        case 8:
+            red = CGFloat(hexValue & 0xFF000000) / 255.0
+            green = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
+            blue = CGFloat((hexValue & 0x0000FF00) >> 8) / 255.0
+            alpha = CGFloat(hexValue & 0x000000FF) / 255.0
+
+        default:
+            alpha = defaultValue
+            red = defaultValue
+            green = defaultValue
+            blue = defaultValue
         }
 
         self.init(red: red, green: green, blue: blue, alpha: alpha)
