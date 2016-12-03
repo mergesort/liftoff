@@ -8,10 +8,27 @@ extension UIViewController {
         childViewController.didMove(toParentViewController: self)
     }
 
-    func remove(childViewController: UIViewController) {
-        childViewController.willMove(toParentViewController: nil)
-        childViewController.view.removeFromSuperview()
-        childViewController.removeFromParentViewController()
+    func insert(childViewController: UIViewController, belowSubview subview: UIView) {
+        self.addChildViewController(childViewController)
+        self.view.insertSubview(childViewController.view, belowSubview: subview)
+        childViewController.didMove(toParentViewController: self)
     }
 
+    func insert(childViewController: UIViewController, aboveSubview subview: UIView) {
+        self.addChildViewController(childViewController)
+        self.view.insertSubview(childViewController.view, aboveSubview: subview)
+        childViewController.didMove(toParentViewController: self)
+    }
+
+    func insert(childViewController: UIViewController, at index: Int) {
+        self.addChildViewController(childViewController)
+        self.view.insertSubview(childViewController.view, at: index)
+        childViewController.didMove(toParentViewController: self)
+    }
+
+    func removeFromParent() {
+        self.willMove(toParentViewController: nil)
+        self.view.removeFromSuperview()
+        self.removeFromParentViewController()
+    }
 }
