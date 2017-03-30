@@ -1,11 +1,3 @@
-//
-//  UIFont+<%= project_name %>.swift
-//  <%= project_name %>
-//
-//  Created by <%= author %> on <%= Time.now.strftime("%-m/%-d/%y") %>
-//  Copyright (c) <%= Time.now.strftime('%Y') %> <%= company %>. All rights reserved.
-//
-
 import UIKit
 
 enum FontStyle {
@@ -38,8 +30,13 @@ private extension FontStyle {
 
 extension UIFont {
 
-    static func fontWithStyle(_ style: FontStyle, size: CGFloat) -> UIFont? {
-        return UIFont(name: style.fontName, size: size)
-    }
+    convenience init?(style: FontStyle, size: CGFloat) {
+        let fontAttributes: [String: Any] = [
+            UIFontDescriptorNameAttribute: style.fontName,
+        ]
 
+        let descriptor = UIFontDescriptor(fontAttributes: fontAttributes)
+
+        self.init(descriptor: descriptor, size: size)
+    }
 }
