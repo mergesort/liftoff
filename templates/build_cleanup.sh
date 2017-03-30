@@ -1,2 +1,2 @@
-"${SRCROOT}/bin/swift_format.sh"
-"${SRCROOT}/bin/swift_lint.sh"
+"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat" --header strip --disable unusedArguments
+"${PODS_ROOT}/SwiftLint/swiftlint"

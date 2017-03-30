@@ -24,8 +24,6 @@ templates:
   - setup.sh: bin/setup
   - README.md: README.md
   - swiftlint.yml: .swiftlint.yml
-  - swift_format.sh: bin/swift_format.sh
-  - swift_lint.sh: bin/swift_lint.sh
 
 warnings:
   - GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED
@@ -90,6 +88,10 @@ app_target_templates:
           - API.podspec
           - API.swift
       - Generic:
+        - UIAlertController+SimpleButtons
+          - UIAlertController+SimpleButtons.swift
+        - UIColor+Utilities
+          - UIColor+Utilities.swift
         - DispatchTime+AfterNow:
           - DispatchTime+AfterNow.swift
         - Logging:
