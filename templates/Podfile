@@ -4,17 +4,25 @@ use_frameworks!
 
 platform :ios, '<%= deployment_target %>'
 
+def tools
+  pod 'SwiftFormat/CLI', '0.28.1'
+  pod 'SwiftLint', '0.17.0'
+end
+
 def development_pods
   pod 'API', :path => './<%= project_name %>/Development Pods/API'
 end
 
 def external_pods
-  pod 'BuddyBuildSDK'
+  pod 'Anchorman', '2.0'
+  pod 'GenericCells', '1.1.1'
   pod 'Localize-Swift', '1.7.1'
-  pod 'SwiftyBeaver', '1.1.1'
+  pod 'StatefulViewController', '3.0.1'
+  pod 'SwiftyBeaver', '1.1.4'
 end
 
 target '<%= project_name %>' do
+  tools
   development_pods
   external_pods
 end
