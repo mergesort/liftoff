@@ -1,5 +1,6 @@
 force_try: warning
 force_cast: warning
+trailing_comma: mandatory_comma: true
 
 variable_name:
   excluded:
@@ -8,8 +9,16 @@ variable_name:
 
 opt_in_rules:
   - force_unwrapping
+  - sorted_imports
+  - switch_case_on_newline
+  - prohibited_super_call
+  - empty_count
+  - redundant_nil_coalescing
 
 disabled_rules: # rule identifiers to exclude from running
+  - large_tuple
+  - nesting
+  - force_unwrapping
   - line_length # enforce a maximum line length
   - function_body_length # enforce a maximum function body length
   - type_body_length # enforce a maximum type body length
@@ -41,7 +50,7 @@ custom_rules:
     name: "Space After Comment"
     regex: "(^ *//\w+)"
     message: "There should be a space after //"
-    severity: error
+    severity: warning
 
   empty_line_after_guard:
     name: "Empty Line After Guard"
@@ -61,8 +70,14 @@ custom_rules:
     message: "There should be an empty line after a declaration"
     severity: error
 
-  # multiple_empty_lines:
-  #   name: "Multiple Empty Lines"
-  #   regex: "((?:\s*\n){3,})"
-  #   message: "There are too many line breaks"
-  #   severity: error
+#  non_empty_first_line_in_function:
+#    name: "First Line In A Function"
+#    regex: "func\s+[^{]+\{[^\n]*\n\s*\n"
+#    message: "The first line in a function must not be empty"
+#    severity: error
+
+# multiple_empty_lines:
+#   name: "Multiple Empty Lines"
+#   regex: "((?:\s*\n){3,})"
+#   message: "There are too many line breaks"
+#   severity: error
