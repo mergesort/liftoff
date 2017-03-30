@@ -88,9 +88,9 @@ app_target_templates:
           - API.podspec
           - API.swift
       - Generic:
-        - UIAlertController+SimpleButtons
+        - UIAlertController+SimpleButtons:
           - UIAlertController+SimpleButtons.swift
-        - UIColor+Utilities
+        - UIColor+Utilities:
           - UIColor+Utilities.swift
         - DispatchTime+AfterNow:
           - DispatchTime+AfterNow.swift
