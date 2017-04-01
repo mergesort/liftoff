@@ -58,18 +58,17 @@ project_template: swift
 app_target_templates:
   objc:
     - <%= project_name %>:
-      - Modules:
-        - Development Pods:
-        - Generic:
-        - Main Target:
-          - Some Feature:
-            - Categories:
-            - Models:
-            - Protocols:
-            - View Models:
-            - View Data:
-            - View Controllers:
-            - Views:
+      - Development Pods:
+      - Generic:
+      - Main Target:
+        - Some Feature:
+          - Categories:
+          - Models:
+          - Protocols:
+          - View Models:
+          - View Data:
+          - View Controllers:
+          - Views:
       - Resources:
         - Images.xcassets
         - Main.storyboard
