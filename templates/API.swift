@@ -127,8 +127,6 @@ public enum API {
         request.addValue(acceptEncoding.headerString(), forHTTPHeaderField: "Accept")
         request.addValue(contentType.headerString(), forHTTPHeaderField: "Content-Type")
 
-        request.httpShouldHandleCookies = false
-
         headers?.forEach { key, value in
             request.addValue(value, forHTTPHeaderField: key)
         }
