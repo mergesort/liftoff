@@ -75,7 +75,7 @@ public enum RequestEncoding {
 public enum API {
 
     private static let urlSession: URLSession = {
-        let urlSession = URLSession(configuration: URLSessionConfiguration.teachableConfiguration)
+        let urlSession = URLSession(configuration: URLSessionConfiguration.appConfiguration)
 
         return urlSession
     }()
@@ -160,7 +160,7 @@ public enum API {
 
 private extension URLSessionConfiguration {
 
-    static var teachableConfiguration: URLSessionConfiguration {
+    static var appConfiguration: URLSessionConfiguration {
         let configuration = URLSessionConfiguration.default
 
         return configuration
