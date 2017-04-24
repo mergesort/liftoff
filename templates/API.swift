@@ -101,10 +101,7 @@ public enum API {
         }
 
         components.path = endpoint.path
-
-        if let port = endpoint.port {
-            components.port = port
-        }
+        components.port = endpoint.port
 
         let isGetRequest = endpoint.httpMethod == .get
         if let parameters = parameters, isGetRequest {
